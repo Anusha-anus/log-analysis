@@ -1,3 +1,4 @@
+import logging
 import os
 import time
 
@@ -27,3 +28,28 @@ def monitor_log(log_file, interval=10):
 if __name__ == "__main__":
     log_file = 'example.log'  # Change this to the path of your log file
     monitor_log(log_file)
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Define log levels
+log_levels = [logging.INFO, logging.DEBUG, logging.ERROR]
+
+# Function to continuously log messages at different levels
+def log_messages():
+    while True:
+        # Loop through log levels
+        for level in log_levels:
+            # Log message at current level
+            if level == logging.INFO:
+                logging.info("This is an INFO message")
+            elif level == logging.DEBUG:
+                logging.debug("This is a DEBUG message")
+            elif level == logging.ERROR:
+                logging.error("This is an ERROR message")
+            
+            # Sleep for a short interval before logging next message
+            time.sleep(1)
+
+if __name__ == "__main__":
+    log_messages()
